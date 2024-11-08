@@ -4,7 +4,7 @@ from datetime import datetime
 from matplotlib import pyplot as plt
 
 
-def plot_temps():
+def plot_temps(choice):
     filename = 'sitka_weather_2018_simple.csv'
     with open(filename) as f:
         reader = csv.reader(f)
@@ -41,7 +41,7 @@ def plot_temps():
 
     plt.show()
 
-
+def main():
     print(f'Hello and welcome to WeatherService, where you can find the high temperatures and low temperatures from the airport in Sitka, Alaska.')
     print(f'Please indicate whether you want to view a chart on "low" temperatures or "high" temperatures by simply typing low or high. Type exit to stop.')
 
@@ -49,16 +49,15 @@ def plot_temps():
     while True:
 
         choice = input("> ")
-        if choice.upper() != 'HIGH' and choice.upper() != 'LOW' and choice.upper() != 'EXIT':
+        if choice.upper() not in ['HIGH', 'LOW', "EXIT"]:
             print(input('Invalid choice. Please try again.'))
         elif choice.upper() == 'EXIT':
             print('Thank you for using WeatherService. Goodbye!')
             sys.exit()
-        elif choice.upper() == 'HIGH':
-            plot_temps()
+        else:
+            plot_temps(choice)
             print("Select another option from the menu or type exit to quit.")
-            continue
-        elif choice.upper() == 'LOW':
-            plot_temps()
-            print("Select another option from the menu or type exit to quit.")
-            continue
+
+
+if __name__ == "__main__":
+    main()
