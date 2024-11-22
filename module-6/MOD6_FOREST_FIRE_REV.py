@@ -21,14 +21,21 @@ HEIGHT = 22
 TREE = 'A'
 FIRE = '@'
 EMPTY = ' '
+############### TRUMAN MODIFICATION START ###############
 WATER = 'W'
+WATER_START_X = 36
+WATER_START_Y = 7
+WATER_WIDTH = 9
+WATER_HEIGHT = 10
+############### TRUMAN MODIFICATION OVER  ###############
+
 # (!) Try changing these settings to anything between 0.0 and 1.0:
-INITIAL_TREE_DENSITY = 0.50  # Amount of forest that starts with trees.
+INITIAL_TREE_DENSITY = 0.20  # Amount of forest that starts with trees.
 GROW_CHANCE = 0.01  # Chance a blank space turns into a tree.
 FIRE_CHANCE = 0.01  # Chance a tree is hit by lightning & burns.
 
 # (!) Try setting the pause length to 1.0 or 0.0:
-PAUSE_LENGTH = 0.5
+PAUSE_LENGTH = 0.1
 
 
 def main():
@@ -45,12 +52,18 @@ def main():
         for x in range(forest['width']):
             for y in range(forest['height']):
                 if (x, y) in nextForest:
+                    # If we've already set nextForest[(x, y)] on a
+                    # previous iteration, just do nothing here:
                     continue
 
                 if ((forest[(x, y)] == EMPTY)
                     and (random.random() <= GROW_CHANCE)):
                     # Grow a tree in this empty space.
                     nextForest[(x, y)] = TREE
+                ############### TRUMAN MODIFICATION START ###############
+                elif forest[(x,y)] == WATER:
+                    nextForest[(x,y)] = WATER
+                ############### TRUMAN MODIFICATION OVER  ###############
                 elif ((forest[(x, y)] == TREE)
                     and (random.random() <= FIRE_CHANCE)):
                     # Lightning sets this tree on fire.
@@ -71,37 +84,25 @@ def main():
         forest = nextForest
 
         time.sleep(PAUSE_LENGTH)
-def draw_lake():
-    # Clear the screen before drawing
-    bext.clear()
 
-    # Define the size of the lake
-    lake_width = 20
-    lake_height = 10
-
-    # Define the starting position
-    start_x = 10
-    start_y = 5
-
-    # Loop through the height and width to draw the lake
-    for y in range(lake_height):
-        for x in range(lake_width):
-            # Move to the specific position on the terminal
-            bext.goto(start_x + x, start_y + y)
-            # Draw a "W" for water
-            bext.fg('blue')  # Set the color to blue for water
-            print('W', end='')  # Use 'W' to represent water
-        print()  # Move to the next line after finishing a row
 
 def createNewForest():
     """Returns a dictionary for a new forest data structure."""
     forest = {'width': WIDTH, 'height': HEIGHT}
     for x in range(WIDTH):
         for y in range(HEIGHT):
-            if (random.random() * 100) <= INITIAL_TREE_DENSITY:
+            ############### TRUMAN MODIFICATION START ###############
+            if (WATER_START_Y <= y <= (WATER_START_Y + WATER_HEIGHT)) and (WATER_START_X <= x <= (WATER_START_X + WATER_WIDTH)):
+                forest[(x,y)] = WATER
+            elif (random.random() * 100) <= INITIAL_TREE_DENSITY:
                 forest[(x, y)] = TREE  # Start as a tree.
             else:
-                forest[(x, y)] = EMPTY  # Start as an empty space.
+                forest[(x, y)] = EMPTY  # Start as an empty space
+            #if (random.random() * 100) <= INITIAL_TREE_DENSITY:
+            #    forest[(x, y)] = TREE  # Start as a tree.
+            #else:
+            #    forest[(x, y)] = EMPTY  # Start as an empty space.
+            ############### TRUMAN MODIFICATION OVER  ###############
     return forest
 
 
@@ -113,9 +114,15 @@ def displayForest(forest):
             if forest[(x, y)] == TREE:
                 bext.fg('green')
                 print(TREE, end='')
+            ############### TRUMAN MODIFICATION START ###############
+            elif forest[(x,y)] == WATER:
+                bext.fg('blue')
+                print(WATER, end=' ')
+            ############### TRUMAN MODIFICATION OVER  ###############
             elif forest[(x, y)] == FIRE:
                 bext.fg('red')
                 print(FIRE, end='')
+          	
             elif forest[(x, y)] == EMPTY:
                 print(EMPTY, end='')
         print()
