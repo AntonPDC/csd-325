@@ -150,7 +150,25 @@ willson_financial|schema||local_user|localhost|REFERENCES|G
 willson_financial|schema||local_user|localhost|SELECT|G
 willson_financial|schema||local_user|localhost|SHOW VIEW|G
 willson_financial|schema||local_user|localhost|TRIGGER|G
-willson_financial|schema||local_user|localhost|UPDATE|G</Grants>
+willson_financial|schema||local_user|localhost|UPDATE|G
+willsonfinancial|schema||Willson_user|localhost|ALTER|G
+willsonfinancial|schema||Willson_user|localhost|ALTER ROUTINE|G
+willsonfinancial|schema||Willson_user|localhost|CREATE|G
+willsonfinancial|schema||Willson_user|localhost|CREATE ROUTINE|G
+willsonfinancial|schema||Willson_user|localhost|CREATE TEMPORARY TABLES|G
+willsonfinancial|schema||Willson_user|localhost|CREATE VIEW|G
+willsonfinancial|schema||Willson_user|localhost|DELETE|G
+willsonfinancial|schema||Willson_user|localhost|DROP|G
+willsonfinancial|schema||Willson_user|localhost|EVENT|G
+willsonfinancial|schema||Willson_user|localhost|EXECUTE|G
+willsonfinancial|schema||Willson_user|localhost|INDEX|G
+willsonfinancial|schema||Willson_user|localhost|INSERT|G
+willsonfinancial|schema||Willson_user|localhost|LOCK TABLES|G
+willsonfinancial|schema||Willson_user|localhost|REFERENCES|G
+willsonfinancial|schema||Willson_user|localhost|SELECT|G
+willsonfinancial|schema||Willson_user|localhost|SHOW VIEW|G
+willsonfinancial|schema||Willson_user|localhost|TRIGGER|G
+willsonfinancial|schema||Willson_user|localhost|UPDATE|G</Grants>
       <ServerVersion>9.1.0</ServerVersion>
     </root>
     <collation id="2" parent="1" name="armscii8_bin">
@@ -1052,55 +1070,59 @@ willson_financial|schema||local_user|localhost|UPDATE|G</Grants>
     <collation id="287" parent="1" name="utf8mb4_zh_0900_as_cs">
       <Charset>utf8mb4</Charset>
     </collation>
-    <schema id="288" parent="1" name="information_schema">
+    <schema id="288" parent="1" name="WillsonFinancial">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="289" parent="1" name="information_schema">
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
-    <schema id="289" parent="1" name="movies">
+    <schema id="290" parent="1" name="movies">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="290" parent="1" name="mysql">
+    <schema id="291" parent="1" name="mysql">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="291" parent="1" name="performance_schema">
+    <schema id="292" parent="1" name="performance_schema">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="292" parent="1" name="sys">
+    <schema id="293" parent="1" name="sys">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="293" parent="1" name="test_db">
+    <schema id="294" parent="1" name="test_db">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="294" parent="1" name="willson_financial">
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
-    </schema>
-    <user id="295" parent="1" name="local_user">
+    <user id="295" parent="1" name="Willson_user">
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="296" parent="1" name="movies_user">
+    <user id="296" parent="1" name="local_user">
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="297" parent="1" name="mysql.infoschema">
+    <user id="297" parent="1" name="movies_user">
+      <Host>localhost</Host>
+      <Plugin>caching_sha2_password</Plugin>
+    </user>
+    <user id="298" parent="1" name="mysql.infoschema">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="298" parent="1" name="mysql.session">
+    <user id="299" parent="1" name="mysql.session">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="299" parent="1" name="mysql.sys">
+    <user id="300" parent="1" name="mysql.sys">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="300" parent="1" name="new_user">
+    <user id="301" parent="1" name="new_user">
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="301" parent="1" name="root">
+    <user id="302" parent="1" name="root">
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
